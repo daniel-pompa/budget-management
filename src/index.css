@@ -186,3 +186,54 @@ header h1 {
     font-size: 2rem;
   }
 }
+
+/* Budget component */
+.budget-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-top: -5rem;
+  transform: translateY(5rem);
+}
+
+.two-columns {
+  display: flex;
+  flex-direction: column;
+}
+
+.two-columns:first-child {
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .two-columns {
+    flex-direction: row;
+  }
+  .two-columns > div {
+    width: 50%;
+  }
+  .two-columns:first-child {
+    margin-bottom: 0;
+  }
+}
+
+.budget-content {
+  width: 100%;
+}
+
+.budget-content p {
+  color: var(--blue);
+  font-size: 1.8rem;
+  font-weight: 900;
+}
+
+@media (min-width: 768px) {
+  .budget-content p {
+    font-size: 2.4rem;
+  }
+}
+
+.budget-content span {
+  color: var(--dark-gray);
+  font-weight: 400;
+}

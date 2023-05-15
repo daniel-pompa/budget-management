@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Proptypes from 'prop-types';
 import Alert from './Alert';
 
-const NewBudget = ({ budget, setBudget }) => {
+const NewBudget = ({ budget, setBudget, setBugetIsValid }) => {
   // Create alert state to validate form
   const [message, setMessage] = useState('');
 
@@ -17,6 +17,7 @@ const NewBudget = ({ budget, setBudget }) => {
     }
 
     setMessage(''); // Remove error message if budget is valid
+    setBugetIsValid(true);
   };
 
   return (
@@ -44,6 +45,7 @@ const NewBudget = ({ budget, setBudget }) => {
 NewBudget.propTypes = {
   budget: Proptypes.number.isRequired,
   setBudget: Proptypes.func.isRequired,
+  setBugetIsValid: Proptypes.func.isRequired,
 };
 
 export default NewBudget;
