@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { formatAmount } from '../helpers';
 
 const Budget = ({ budget }) => {
   return (
@@ -11,17 +12,17 @@ const Budget = ({ budget }) => {
       <div className='budget-content'>
         <p>
           Gastado: {''}
-          <span>0</span>
+          <span>{formatAmount(0)}</span>
         </p>
 
         <p>
           Disponible: {''}
-          <span>0</span>
+          <span>{formatAmount(0)}</span>
         </p>
 
         <p>
           Presupuesto: {''}
-          <span>{budget}</span>
+          <span>{formatAmount(budget)}</span>
         </p>
       </div>
     </div>
