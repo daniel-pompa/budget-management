@@ -1,7 +1,13 @@
+import { useState } from 'react';
+import Header from './components/Header';
+
 function App() {
+  // Create budget state
+  const [budget, setBudget] = useState(0);
+
   return (
     <div>
-      <h1>Presupuestos React</h1>
+      <Header budget={budget} setBudget={setBudget} />
     </div>
   );
 }
