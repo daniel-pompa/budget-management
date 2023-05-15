@@ -237,3 +237,29 @@ header h1 {
   color: var(--dark-gray);
   font-weight: 400;
 }
+
+/* New expense icon */
+.new-expense {
+  bottom: 2rem;
+  position: fixed;
+  right: 2rem;
+}
+
+.new-expense img {
+  width: 4rem;
+}
+
+@media (min-width: 768px) {
+  .new-expense {
+    bottom: 5rem;
+    right: 5rem;
+  }
+
+  .new-expense img {
+    width: 5rem;
+  }
+}
+
+.new-expense img:hover {
+  cursor: pointer;
+}
