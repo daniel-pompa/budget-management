@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Header from './components/Header';
+import ExpenseList from './components/ExpenseList';
 import Modal from './components/Modal';
 import { generateID } from './helpers';
 import NewExpenseIcon from './assets/images/new-expense-icon.svg';
@@ -35,7 +36,6 @@ function App() {
     setTimeout(() => {
       setModal(false);
     }, 300);
-    console.log(expense);
   };
 
   return (
@@ -50,7 +50,9 @@ function App() {
       {/* When the budget is valid, the icon to create a new expense is displayed */}
       {bugetIsValid && (
         <>
-          <main>{/* TODO Display ExpenseList component */}</main>
+          <main>
+            <ExpenseList expenses={expenses} />
+          </main>
           <div className='new-expense'>
             <img
               src={NewExpenseIcon}

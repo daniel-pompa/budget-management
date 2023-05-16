@@ -36,7 +36,7 @@ h1 {
 }
 
 h2 {
-  font-size: 1.8rem;
+  font-size: 2rem;
 }
 
 @media (min-width: 768px) {
@@ -45,7 +45,7 @@ h2 {
   }
 
   h2 {
-    font-size: 2.2rem;
+    font-size: 2.4rem;
   }
 }
 
@@ -381,4 +381,77 @@ body .modal {
 
 .modal .form label {
   text-align: left;
+}
+
+/* Expense List */
+.expense-list {
+  margin-top: 10rem;
+}
+
+.expense-list h2 {
+  color: var(--dark-gray);
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.expense {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .expense-content {
+    padding: 1rem;
+  }
+}
+
+.expense-content img {
+  width: 10rem;
+  margin-right: 2rem;
+}
+
+.expense-description .expense-category {
+  color: var(--gray);
+  font-size: 1.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.expense-description .expense-title {
+  color: var(--dark-gray);
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.expense-description .expense-title:hover {
+  cursor: pointer;
+}
+
+.expense-amount {
+  font-size: 1.8rem;
+  color: var(--black);
+  font-weight: 900;
+}
+
+.expense-description .expense-date {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--dark-gray);
+}
+
+.expense-description .expense-date span {
+  font-weight: 400;
+}
+
+@media (min-width: 768px) {
+  .expense-description .expense-category,
+  .expense-description .expense-title,
+  .expense-description .expense-date,
+  .expense-amount {
+    font-size: 2.2rem;
+  }
 }
