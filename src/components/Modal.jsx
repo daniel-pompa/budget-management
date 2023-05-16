@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Alert from './Alert';
 import CloseButton from '../assets/images/close-icon.svg';
 
-const Modal = ({ setModal, animateModal, setAnimateModal }) => {
+const Modal = ({ setModal, animateModal, setAnimateModal, saveExpense }) => {
   // Create state of expenses
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState(0);
@@ -36,7 +36,18 @@ const Modal = ({ setModal, animateModal, setAnimateModal }) => {
       return;
     }
 
-    // TODO Save expense
+    if (amount <= 0) {
+      setAlert('La cantidad tiene que ser mayor que cero');
+
+      setTimeout(() => {
+        setAlert('');
+      }, 3000);
+
+      return;
+    }
+
+    // Save expense
+    saveExpense({ title, amount, category });
   };
 
   return (
@@ -107,6 +118,7 @@ Modal.propTypes = {
   setModal: PropTypes.func.isRequired,
   animateModal: PropTypes.bool.isRequired,
   setAnimateModal: PropTypes.func.isRequired,
+  saveExpense: PropTypes.func.isRequired,
 };
 
 export default Modal;
