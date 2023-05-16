@@ -101,7 +101,7 @@ header h1 {
 .form label {
   color: var(--blue);
   font-size: 2.2rem;
-  margin-bottom: 2rem;
+  margin: 2rem 0;
   text-align: center;
   text-transform: uppercase;
 }
@@ -135,6 +135,27 @@ header h1 {
   padding: 1rem;
 }
 
+@media (min-width: 768px) {
+  .form input[type='text'],
+  .form input[type='number'] {
+    font-size: 2rem;
+  }
+}
+
+.form select {
+  padding: 1rem;
+  border: none;
+  border-radius: 0.4rem;
+  font-size: 1.8rem;
+  background-color: var(--light-gray);
+}
+
+@media (min-width: 768px) {
+  .form select {
+    font-size: 2rem;
+  }
+}
+
 .form input[type='submit'] {
   background-color: var(--blue);
   border-radius: 0.4rem;
@@ -142,7 +163,7 @@ header h1 {
   color: var(--white);
   font-size: 1.8rem;
   font-weight: 900;
-  margin-top: 2.5rem;
+  margin-top: 3rem;
   padding: 1rem;
   text-align: center;
   text-transform: uppercase;
@@ -158,8 +179,7 @@ header h1 {
 @media (min-width: 768px) {
   .form input[type='submit'] {
     display: block;
-    padding: 1rem 3rem;
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
 }
 
@@ -262,4 +282,103 @@ header h1 {
 
 .new-expense img:hover {
   cursor: pointer;
+}
+
+/* Modal window to generate a new expense */
+.modal {
+  background-color: rgb(0 0 0 / 0.92);
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.modal .close-modal {
+  cursor: pointer;
+  height: 3rem;
+  position: absolute;
+  right: 1.2rem;
+  top: 2rem;
+  width: 3rem;
+  z-index: 1;
+}
+
+.modal .close-modal img {
+  width: 2rem;
+}
+
+@media (min-width: 768px) {
+  .modal .close-modal {
+    cursor: pointer;
+    height: 3rem;
+    right: 4rem;
+    top: 3rem;
+    width: 3rem;
+  }
+
+  .modal .close-modal img {
+    width: 100%;
+  }
+}
+
+.modal .form {
+  max-width: 40rem;
+  opacity: 0;
+  transition-duration: 300ms;
+  transition-property: all;
+  transition-timing-function: ease-in;
+}
+
+@media (min-width: 768px) {
+  .modal .form {
+    max-width: 60rem;
+  }
+}
+
+.modal .form legend {
+  border-bottom: 3px solid var(--blue);
+  color: var(--white);
+  display: block;
+  font-size: 2.4rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+  .modal .form legend {
+    font-size: 2.8rem;
+    margin-bottom: 3rem;
+    padding-bottom: 1rem;
+  }
+}
+
+.modal .form label {
+  color: var(--white);
+  font-size: 2rem;
+}
+
+@media (min-width: 768px) {
+  .modal .form label {
+    font-size: 2.4rem;
+  }
+}
+
+body .modal {
+  overflow: hidden;
+}
+
+.modal .form.animate {
+  opacity: 1;
+  position: relative;
+}
+
+.modal .form.close {
+  opacity: 0;
+}
+
+.modal .form label {
+  text-align: left;
 }
