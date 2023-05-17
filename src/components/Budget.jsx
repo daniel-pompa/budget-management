@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { formatAmount } from '../helpers';
@@ -14,7 +15,12 @@ const Budget = ({ expenses, budget }) => {
       (total, expense) => expense.amount + total,
       initialValue
     );
+
+    // Total balance available in budget
+    const totalAvailable = budget - totalSpent;
+
     setSpent(totalSpent);
+    setAvailable(totalAvailable);
   }, [expenses]);
 
   return (
