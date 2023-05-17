@@ -29,6 +29,7 @@ body {
   background-color: var(--light-gray);
   font-size: 1.6rem;
   min-height: 100vh;
+  padding-bottom: 2rem; /* TODO */
 }
 
 h1 {
@@ -163,7 +164,7 @@ header h1 {
   color: var(--white);
   font-size: 1.8rem;
   font-weight: 900;
-  margin-top: 3rem;
+  margin-top: 2.5rem; /* TODO */
   padding: 1rem;
   text-align: center;
   text-transform: uppercase;
@@ -310,11 +311,8 @@ header h1 {
 
 @media (min-width: 768px) {
   .modal .close-modal {
-    cursor: pointer;
-    height: 3rem;
-    right: 4rem;
+    right: 5rem;
     top: 3rem;
-    width: 3rem;
   }
 
   .modal .close-modal img {
@@ -341,7 +339,7 @@ header h1 {
   color: var(--white);
   display: block;
   font-size: 2.4rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   padding-bottom: 1rem;
   text-align: center;
   text-transform: uppercase;
@@ -358,11 +356,13 @@ header h1 {
 .modal .form label {
   color: var(--white);
   font-size: 2rem;
+  margin: 1.8rem 0; /* TODO */
 }
 
 @media (min-width: 768px) {
   .modal .form label {
     font-size: 2.4rem;
+    margin: 2rem 0;
   }
 }
 
@@ -383,7 +383,7 @@ body .modal {
   text-align: left;
 }
 
-/* Expense List */
+/* TODO Expense List */
 .expense-list {
   margin-top: 10rem;
 }
@@ -395,12 +395,16 @@ body .modal {
 }
 
 .expense {
+  align-items: center;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  margin-bottom: 1rem;
   padding: 2rem;
-  margin-bottom: 2rem;
   width: 100%;
+}
+
+.expense-content {
+  display: flex;
 }
 
 @media (min-width: 768px) {
@@ -410,13 +414,19 @@ body .modal {
 }
 
 .expense-content img {
-  width: 10rem;
   margin-right: 2rem;
+  max-width: 8rem;
+}
+
+@media (min-width: 768px) {
+  .expense-content img {
+    max-width: 10rem;
+  }
 }
 
 .expense-description .expense-category {
   color: var(--gray);
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 900;
   text-transform: uppercase;
 }
@@ -432,25 +442,37 @@ body .modal {
 }
 
 .expense-amount {
-  font-size: 1.8rem;
   color: var(--black);
+  font-size: 1.8rem;
+  font-weight: 900;
+  padding-bottom: 1rem; /* TODO */
+}
+
+.expense-description p {
+  margin: 0;
+}
+
+.expense-description p {
+  margin-bottom: 1rem;
+}
+
+.expense-description .expense-date {
+  color: var(--dark-gray);
+  font-size: 1.5rem;
   font-weight: 900;
 }
 
 .expense-description .expense-date {
-  font-size: 1.8rem;
-  font-weight: 900;
-  color: var(--dark-gray);
-}
-
-.expense-description .expense-date span {
+  color: var(--gray); /* TODO */
   font-weight: 400;
 }
 
 @media (min-width: 768px) {
   .expense-description .expense-category,
+  .expense-description .expense-date {
+    font-size: 2rem;
+  }
   .expense-description .expense-title,
-  .expense-description .expense-date,
   .expense-amount {
     font-size: 2.2rem;
   }
