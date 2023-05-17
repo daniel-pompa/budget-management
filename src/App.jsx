@@ -6,6 +6,10 @@ import { generateID } from './helpers';
 import NewExpenseIcon from './assets/images/new-expense-icon.svg';
 
 function App() {
+  /* Expenses state
+  It starts as an empty array and will be filled with the data entered in the modal window form of the Modal.jsx component */
+  const [expenses, setExpenses] = useState([]);
+
   // Create budget state
   const [budget, setBudget] = useState(0);
   const [bugetIsValid, setBugetIsValid] = useState(false);
@@ -13,10 +17,6 @@ function App() {
   // Create modal window state
   const [modal, setModal] = useState(false);
   const [animateModal, setAnimateModal] = useState(false);
-
-  /* Expense state
-  It starts as an empty array and will be filled with the data entered in the modal window form of the Modal.jsx component */
-  const [expenses, setExpenses] = useState([]);
 
   // Function to generate a new expense
   const handleNewExpense = () => {
@@ -39,8 +39,9 @@ function App() {
   };
 
   return (
-    <div>
+    <div className={modal ? 'fixed' : null}>
       <Header
+        expenses={expenses}
         budget={budget}
         setBudget={setBudget}
         bugetIsValid={bugetIsValid}

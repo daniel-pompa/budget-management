@@ -19,17 +19,22 @@ html {
   font-size: 62.5%;
 }
 
+body {
+  background-color: var(--light-gray);
+  font-size: 1.6rem;
+  min-height: 100vh;
+  padding-bottom: 2rem;
+}
+
 *,
 *:before,
 *:after {
   box-sizing: inherit;
 }
 
-body {
-  background-color: var(--light-gray);
-  font-size: 1.6rem;
-  min-height: 100vh;
-  padding-bottom: 2rem; /* TODO */
+.fixed {
+  overflow: hidden;
+  height: 100vh;
 }
 
 h1 {
@@ -164,7 +169,7 @@ header h1 {
   color: var(--white);
   font-size: 1.8rem;
   font-weight: 900;
-  margin-top: 2.5rem; /* TODO */
+  margin-top: 2.5rem;
   padding: 1rem;
   text-align: center;
   text-transform: uppercase;
@@ -356,7 +361,7 @@ header h1 {
 .modal .form label {
   color: var(--white);
   font-size: 2rem;
-  margin: 1.8rem 0; /* TODO */
+  margin: 1.8rem 0;
 }
 
 @media (min-width: 768px) {
@@ -383,7 +388,7 @@ body .modal {
   text-align: left;
 }
 
-/* TODO Expense List */
+/* Expense List */
 .expense-list {
   margin-top: 10rem;
 }
@@ -398,7 +403,7 @@ body .modal {
   align-items: center;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   padding: 2rem;
   width: 100%;
 }
@@ -445,7 +450,7 @@ body .modal {
   color: var(--black);
   font-size: 1.8rem;
   font-weight: 900;
-  padding-bottom: 1rem; /* TODO */
+  padding-bottom: 1rem;
 }
 
 .expense-description p {
@@ -463,7 +468,7 @@ body .modal {
 }
 
 .expense-description .expense-date {
-  color: var(--gray); /* TODO */
+  color: var(--gray);
   font-weight: 400;
 }
 
