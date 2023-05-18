@@ -10,7 +10,7 @@ const Budget = ({ expenses, budget }) => {
 
   useEffect(() => {
     const initialValue = 0;
-    /* Executes a reducer function for each element (expense) of the expense array and returns a single value with the total amount spent as a result */
+    /* Executes a reducer function for each element of the expense array and returns a single value with the total amount spent as a result */
     const totalSpent = expenses.reduce(
       (total, expense) => expense.amount + total,
       initialValue

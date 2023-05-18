@@ -1,5 +1,14 @@
 import PropTypes from 'prop-types';
+import {
+  LeadingActions,
+  SwipeableList,
+  SwipeableListItem,
+  SwipeAction,
+  TrailingActions,
+} from 'react-swipeable-list';
+import 'react-swipeable-list/dist/styles.css';
 import { formatDate } from '../helpers';
+
 import MoneySavingIcon from '../assets/images/money-saving-icon.svg';
 import HomeIcon from '../assets/images/home-icon.svg';
 import FoodIcon from '../assets/images/food-icon.svg';
@@ -33,18 +42,43 @@ const iconDictionary = {
 const Expense = ({ expense }) => {
   const { title, amount, category, date } = expense;
 
+  // TODO Solve problem with styles
+  const leadingActions = () => (
+    <LeadingActions>
+      <SwipeAction onClick={() => console.log('Editar')}>Editar</SwipeAction>
+    </LeadingActions>
+  );
+
+  const trailingActions = () => (
+    <TrailingActions>
+      <SwipeAction
+        destructive={true} // TODO Remove
+        onClick={() => console.info('Eliminar')}
+      >
+        Eliminar
+      </SwipeAction>
+    </TrailingActions>
+  );
+
   return (
-    <div className='expense shadow'>
-      <div className='expense-content'>
-        <img src={iconDictionary[category]} alt='expense icon' />
-        <div className='expense-description'>
-          <p className='expense-category'>{category}</p>
-          <p className='expense-title'>{title}</p>
-          <p className='expense-date'>{formatDate(date)}</p>
+    <SwipeableList>
+      <SwipeableListItem
+        leadingActions={leadingActions()}
+        trailingActions={trailingActions()}
+      >
+        <div className='expense shadow'>
+          <div className='expense-content'>
+            <img src={iconDictionary[category]} alt='expense icon' />
+            <div className='expense-description'>
+              <p className='expense-category'>{category}</p>
+              <p className='expense-title'>{title}</p>
+              <p className='expense-date'>{formatDate(date)}</p>
+            </div>
+          </div>
+          <p className='expense-amount'>{amount}€</p>
         </div>
-      </div>
-      <p className='expense-amount'>{amount}€</p>
-    </div>
+      </SwipeableListItem>
+    </SwipeableList>
   );
 };
 

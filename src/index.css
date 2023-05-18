@@ -406,6 +406,7 @@ body .modal {
   margin-bottom: 2rem;
   padding: 2rem;
   width: 100%;
+  cursor: pointer;
 }
 
 .expense-content {
@@ -442,10 +443,6 @@ body .modal {
   font-weight: 700;
 }
 
-.expense-description .expense-title:hover {
-  cursor: pointer;
-}
-
 .expense-amount {
   color: var(--black);
   font-size: 1.8rem;
@@ -480,5 +477,31 @@ body .modal {
   .expense-description .expense-title,
   .expense-amount {
     font-size: 2.2rem;
+  }
+}
+
+/*** Swipe list overrides **/
+.swipe-action__leading {
+  background-color: var(--blue);
+  color: var(--white);
+  margin-bottom: 2rem;
+}
+
+.swipe-action__trailing {
+  background-color: #dc2626;
+  color: var(--white);
+  margin-bottom: 2rem;
+}
+
+.swipeable-list .swipe-action {
+  align-items: center;
+  display: flex;
+  font-size: 1.8rem;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .swipeable-list .swipe-action {
+    font-size: 2.4rem;
   }
 }
