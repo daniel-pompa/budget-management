@@ -7,8 +7,10 @@ import NewExpenseIcon from './assets/images/new-expense-icon.svg';
 
 function App() {
   /* Expenses state
-  It starts as an empty array and will be filled with the data entered in the modal window form of the Modal.jsx component */
-  const [expenses, setExpenses] = useState([]);
+  It starts with expenses stored in localStorage or with an empty array and will be filled with the data entered in the modal window form of the Modal.jsx component */
+  const [expenses, setExpenses] = useState(
+    JSON.parse(localStorage.getItem('expenses')) || []
+  );
 
   // Create budget state
   const [budget, setBudget] = useState(
@@ -46,6 +48,11 @@ function App() {
       setBugetIsValid(true);
     }
   }, []);
+
+  // Expenses at LocalStorage
+  useEffect(() => {
+    localStorage.setItem('expenses', JSON.stringify(expenses));
+  }, [expenses]);
 
   // Function to generate a new expense
   const handleNewExpense = () => {
