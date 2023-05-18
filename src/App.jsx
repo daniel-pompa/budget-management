@@ -51,6 +51,8 @@ function App() {
       );
 
       setExpenses(updatedExpenses);
+      /* Clear the state */
+      setEditExpense({});
     } else {
       // Create new expenditure
       expense.id = generateID();
@@ -63,6 +65,12 @@ function App() {
     setTimeout(() => {
       setModal(false);
     }, 300);
+  };
+
+  // Function to delete expenses
+  const deleteExpense = id => {
+    const updatedExpenses = expenses.filter(expense => expense.id !== id);
+    setExpenses(updatedExpenses);
   };
 
   return (
@@ -79,7 +87,11 @@ function App() {
       {bugetIsValid && (
         <>
           <main>
-            <ExpenseList expenses={expenses} setEditExpense={setEditExpense} />
+            <ExpenseList
+              expenses={expenses}
+              setEditExpense={setEditExpense}
+              deleteExpense={deleteExpense}
+            />
           </main>
           <div className='new-expense'>
             <img

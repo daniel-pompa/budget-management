@@ -39,8 +39,8 @@ const iconDictionary = {
   transporte: TransportIcon,
 };
 
-const Expense = ({ expense, setEditExpense }) => {
-  const { title, amount, category, date } = expense;
+const Expense = ({ expense, setEditExpense, deleteExpense }) => {
+  const { title, amount, category, date, id } = expense;
 
   const leadingActions = () => (
     <LeadingActions>
@@ -50,10 +50,7 @@ const Expense = ({ expense, setEditExpense }) => {
 
   const trailingActions = () => (
     <TrailingActions>
-      <SwipeAction
-        destructive={true} // TODO Remove
-        onClick={() => console.info('Eliminar')}
-      >
+      <SwipeAction onClick={() => deleteExpense(id)} destructive={true}>
         Eliminar
       </SwipeAction>
     </TrailingActions>
@@ -84,6 +81,7 @@ const Expense = ({ expense, setEditExpense }) => {
 Expense.propTypes = {
   expense: PropTypes.object.isRequired,
   setEditExpense: PropTypes.func.isRequired,
+  deleteExpense: PropTypes.func.isRequired,
 };
 
 export default Expense;
