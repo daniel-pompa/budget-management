@@ -218,7 +218,18 @@ header h1 {
   display: flex;
   justify-content: space-between;
   margin-top: -5rem;
+  padding: 2rem 0;
   transform: translateY(5rem);
+}
+
+@media (min-width: 768px) {
+  .budget-container {
+    padding: 4rem;
+  }
+}
+
+.budget-container svg {
+  width: 20rem;
 }
 
 .two-columns {
@@ -250,11 +261,13 @@ header h1 {
   color: var(--blue);
   font-size: 1.8rem;
   font-weight: 900;
+  text-align: center;
 }
 
 @media (min-width: 768px) {
   .budget-content p {
     font-size: 2.4rem;
+    text-align: left;
   }
 }
 
@@ -503,4 +516,9 @@ body .modal {
   .swipeable-list .swipe-action {
     font-size: 2.4rem;
   }
+}
+
+/** Circular Progressbar */
+.CircularProgressbar .CircularProgressbar-text {
+  font-size: 1rem !important;
 }

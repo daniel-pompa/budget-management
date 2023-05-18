@@ -1,6 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 import { formatAmount } from '../helpers';
 
 const Budget = ({ expenses, budget }) => {
@@ -25,9 +27,8 @@ const Budget = ({ expenses, budget }) => {
 
   return (
     <div className='budget-container container shadow two-columns'>
-      {/* TODO Display the Graphics component here */}
       <div>
-        <h2>Gráfico</h2>
+        <CircularProgressbar value={0} />
       </div>
 
       <div className='budget-content'>
