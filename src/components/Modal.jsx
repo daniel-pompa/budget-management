@@ -1,16 +1,35 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Alert from './Alert';
 import CloseButton from '../assets/images/close-icon.svg';
 
-const Modal = ({ setModal, animateModal, setAnimateModal, saveExpense }) => {
+const Modal = ({
+  setModal,
+  animateModal,
+  setAnimateModal,
+  saveExpense,
+  editExpense,
+  setEditExpense,
+}) => {
   // Create state of expenses
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState(0);
   const [category, setCategory] = useState('');
+  const [date, setDate] = useState('');
+  const [id, setId] = useState('');
 
   // Create alert state to validate the form
   const [alert, setAlert] = useState('');
+
+  useEffect(() => {
+    if (Object.keys(editExpense).length > 0) {
+      setTitle(editExpense.title);
+      setAmount(editExpense.amount);
+      setCategory(editExpense.category);
+      setDate(editExpense.date);
+      setId(editExpense.id);
+    }
+  }, [editExpense]);
 
   // Function to close modal window
   const hideModal = () => {
@@ -19,6 +38,9 @@ const Modal = ({ setModal, animateModal, setAnimateModal, saveExpense }) => {
     setTimeout(() => {
       setModal(false);
     }, 300);
+
+    /* Clear the state when closing the modal window */
+    setEditExpense({});
   };
 
   // Function that is executed when the user submits the form.
@@ -47,7 +69,7 @@ const Modal = ({ setModal, animateModal, setAnimateModal, saveExpense }) => {
     }
 
     // Save expense
-    saveExpense({ title, amount, category });
+    saveExpense({ title, amount, category, date, id });
   };
 
   return (
@@ -61,7 +83,7 @@ const Modal = ({ setModal, animateModal, setAnimateModal, saveExpense }) => {
         onSubmit={handleSubmit}
         className={`form ${animateModal ? 'animate' : 'close'}`}
       >
-        <legend>Nuevo Gasto</legend>
+        <legend>{editExpense.title ? 'Editar Gasto' : 'Nuevo Gasto'}</legend>
         {alert && <Alert type='error'>{alert}</Alert>}
         <div className='field'>
           <label htmlFor='title'>Título</label>
@@ -108,7 +130,10 @@ const Modal = ({ setModal, animateModal, setAnimateModal, saveExpense }) => {
           </select>
         </div>
 
-        <input type='submit' value='Crear' />
+        <input
+          type='submit'
+          value={editExpense.title ? 'Guardar Cambios' : 'Crear'}
+        />
       </form>
     </div>
   );
@@ -119,6 +144,8 @@ Modal.propTypes = {
   animateModal: PropTypes.bool.isRequired,
   setAnimateModal: PropTypes.func.isRequired,
   saveExpense: PropTypes.func.isRequired,
+  editExpense: PropTypes.object.isRequired,
+  setEditExpense: PropTypes.func.isRequired,
 };
 
 export default Modal;

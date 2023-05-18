@@ -23,7 +23,6 @@ body {
   background-color: var(--light-gray);
   font-size: 1.6rem;
   min-height: 100vh;
-  padding-bottom: 2rem;
 }
 
 *,
@@ -480,7 +479,7 @@ body .modal {
   }
 }
 
-/*** Swipe list overrides **/
+/** Swipe list overrides */
 .swipe-action__leading {
   background-color: var(--blue);
   color: var(--white);

@@ -39,13 +39,12 @@ const iconDictionary = {
   transporte: TransportIcon,
 };
 
-const Expense = ({ expense }) => {
+const Expense = ({ expense, setEditExpense }) => {
   const { title, amount, category, date } = expense;
 
-  // TODO Solve problem with styles
   const leadingActions = () => (
     <LeadingActions>
-      <SwipeAction onClick={() => console.log('Editar')}>Editar</SwipeAction>
+      <SwipeAction onClick={() => setEditExpense(expense)}>Editar</SwipeAction>
     </LeadingActions>
   );
 
@@ -84,6 +83,7 @@ const Expense = ({ expense }) => {
 
 Expense.propTypes = {
   expense: PropTypes.object.isRequired,
+  setEditExpense: PropTypes.func.isRequired,
 };
 
 export default Expense;

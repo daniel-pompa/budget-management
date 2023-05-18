@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import ExpenseList from './components/ExpenseList';
 import Modal from './components/Modal';
@@ -18,9 +18,24 @@ function App() {
   const [modal, setModal] = useState(false);
   const [animateModal, setAnimateModal] = useState(false);
 
+  /* State to edit expense
+  It starts as an empty object and will be filled with the data entered in the modal window form of the Modal.jsx component */
+  const [editExpense, setEditExpense] = useState({});
+
+  useEffect(() => {
+    if (Object.keys(editExpense).length > 0) {
+      setModal(true);
+
+      setTimeout(() => {
+        setAnimateModal(true);
+      }, 300);
+    }
+  }, [editExpense]);
+
   // Function to generate a new expense
   const handleNewExpense = () => {
     setModal(true);
+    setEditExpense({});
 
     setTimeout(() => {
       setAnimateModal(true);
@@ -29,10 +44,22 @@ function App() {
 
   // Function to save expenses
   const saveExpense = expense => {
-    expense.id = generateID();
-    expense.date = Date.now();
-    setExpenses([...expenses, expense]);
+    if (expense.id) {
+      // Update an expense
+      const updatedExpenses = expenses.map(currentExpense =>
+        currentExpense.id === expense.id ? expense : currentExpense
+      );
+
+      setExpenses(updatedExpenses);
+    } else {
+      // Create new expenditure
+      expense.id = generateID();
+      expense.date = Date.now();
+      setExpenses([...expenses, expense]);
+    }
+
     setAnimateModal(false);
+
     setTimeout(() => {
       setModal(false);
     }, 300);
@@ -52,7 +79,7 @@ function App() {
       {bugetIsValid && (
         <>
           <main>
-            <ExpenseList expenses={expenses} />
+            <ExpenseList expenses={expenses} setEditExpense={setEditExpense} />
           </main>
           <div className='new-expense'>
             <img
@@ -71,6 +98,8 @@ function App() {
           animateModal={animateModal}
           setAnimateModal={setAnimateModal}
           saveExpense={saveExpense}
+          editExpense={editExpense}
+          setEditExpense={setEditExpense}
         />
       )}
     </div>
