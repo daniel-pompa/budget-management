@@ -11,7 +11,9 @@ function App() {
   const [expenses, setExpenses] = useState([]);
 
   // Create budget state
-  const [budget, setBudget] = useState(0);
+  const [budget, setBudget] = useState(
+    Number(localStorage.getItem('budget')) || 0
+  );
   const [bugetIsValid, setBugetIsValid] = useState(false);
 
   // Create modal window state
@@ -31,6 +33,19 @@ function App() {
       }, 300);
     }
   }, [editExpense]);
+
+  useEffect(() => {
+    localStorage.setItem('budget', budget || 0);
+  }, [budget]);
+
+  // If the budget has been defined
+  useEffect(() => {
+    const localStorageBudget = Number(localStorage.getItem('budget'));
+
+    if (localStorageBudget > 0) {
+      setBugetIsValid(true);
+    }
+  }, []);
 
   // Function to generate a new expense
   const handleNewExpense = () => {
@@ -54,7 +69,7 @@ function App() {
       /* Clear the state */
       setEditExpense({});
     } else {
-      // Create new expenditure
+      // Create new expense
       expense.id = generateID();
       expense.date = Date.now();
       setExpenses([...expenses, expense]);
