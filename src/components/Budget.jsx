@@ -5,7 +5,13 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { formatAmount } from '../helpers';
 
-const Budget = ({ expenses, budget }) => {
+const Budget = ({
+  expenses,
+  setExpenses,
+  budget,
+  setBudget,
+  setBugetIsValid,
+}) => {
   // State for available and spent balance
   const [percentage, setPercentage] = useState(0);
   const [available, setAvailable] = useState(0);
@@ -31,6 +37,17 @@ const Budget = ({ expenses, budget }) => {
       setPercentage(newPercentage);
     }, 1000);
   }, [expenses]);
+
+  // Function for deleting expenses and reset the application
+  const handleResetApp = () => {
+    const result = confirm('¿Quieres restablecer la aplicación?');
+
+    if (result) {
+      setBudget(0);
+      setExpenses([]);
+      setBugetIsValid(false);
+    }
+  };
 
   return (
     <div className='budget-container container shadow two-columns'>
@@ -61,6 +78,10 @@ const Budget = ({ expenses, budget }) => {
           Presupuesto: {''}
           <span>{formatAmount(budget)}</span>
         </p>
+
+        <button className='reset-app' type='button' onClick={handleResetApp}>
+          Restablecer
+        </button>
       </div>
     </div>
   );
@@ -68,7 +89,10 @@ const Budget = ({ expenses, budget }) => {
 
 Budget.propTypes = {
   expenses: PropTypes.array.isRequired,
+  setExpenses: PropTypes.func.isRequired,
   budget: PropTypes.number.isRequired,
+  setBudget: PropTypes.func.isRequired,
+  setBugetIsValid: PropTypes.func.isRequired,
 };
 
 export default Budget;

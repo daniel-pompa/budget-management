@@ -4,6 +4,7 @@ import Budget from './Budget';
 
 const Header = ({
   expenses,
+  setExpenses,
   budget,
   setBudget,
   bugetIsValid,
@@ -15,7 +16,13 @@ const Header = ({
       {/* Display the Budget component or the NewBudget component */}
       {bugetIsValid ? (
         // The budget is valid
-        <Budget expenses={expenses} budget={budget} />
+        <Budget
+          expenses={expenses}
+          setExpenses={setExpenses}
+          budget={budget}
+          setBudget={setBudget}
+          setBugetIsValid={setBugetIsValid}
+        />
       ) : (
         // The budget is not valid
         <NewBudget
@@ -30,6 +37,7 @@ const Header = ({
 
 Header.propTypes = {
   expenses: Proptypes.array.isRequired,
+  setExpenses: Proptypes.func.isRequired,
   budget: Proptypes.number.isRequired,
   setBudget: Proptypes.func.isRequired,
   bugetIsValid: Proptypes.bool.isRequired,

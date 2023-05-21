@@ -255,6 +255,7 @@ header h1 {
 
 .budget-content {
   width: 100%;
+  padding: 1rem;
 }
 
 .budget-content p {
@@ -277,6 +278,24 @@ header h1 {
 .budget-content span {
   color: var(--dark-gray);
   font-weight: 400;
+}
+
+.reset-app {
+  background-color: var(--blue);
+  border-radius: 0.4rem;
+  border: none;
+  color: var(--white);
+  font-weight: 900;
+  padding: 1rem;
+  text-align: center;
+  text-transform: uppercase;
+  transition-duration: 300ms;
+  transition-property: background-color;
+  width: 100%;
+}
+.reset-app:hover {
+  background-color: #2563eb;
+  cursor: pointer;
 }
 
 /* New expense icon */
