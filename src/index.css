@@ -263,6 +263,9 @@ header h1 {
   font-weight: 900;
   text-align: center;
 }
+.budget-content p.negative span {
+  color: #b91c1c;
+}
 
 @media (min-width: 768px) {
   .budget-content p {
