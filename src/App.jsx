@@ -27,9 +27,9 @@ function App() {
   It starts as an empty object and will be filled with the data entered in the modal window form of the Modal.jsx component */
   const [editExpense, setEditExpense] = useState({});
 
-  /* State to filter expenses
-  Starts as an empty string and will be filled with the option selected in the Filter.jsx component */
+  // State to filter expenses
   const [filter, setFilter] = useState('');
+  const [leakedExpenses, setLeakedExpenses] = useState([]);
 
   // Update expenses
   useEffect(() => {
@@ -46,9 +46,13 @@ function App() {
   useEffect(() => {
     if (filter) {
       // Filter expenses by category
-    }
-  }, [filter])
+      const leakedExpenses = expenses.filter(
+        expense => expense.category === filter
+      );
 
+      setLeakedExpenses(leakedExpenses);
+    }
+  }, [expenses, filter]);
 
   // Budget at LocalStorage
   useEffect(() => {
@@ -129,6 +133,8 @@ function App() {
               expenses={expenses}
               setEditExpense={setEditExpense}
               deleteExpense={deleteExpense}
+              filter={filter}
+              leakedExpenses={leakedExpenses}
             />
           </main>
           <div className='new-expense'>
