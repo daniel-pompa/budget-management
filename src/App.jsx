@@ -4,6 +4,7 @@ import ExpenseList from './components/ExpenseList';
 import Modal from './components/Modal';
 import { generateID } from './helpers';
 import NewExpenseIcon from './assets/images/new-expense-icon.svg';
+import Filter from './components/Filter';
 
 function App() {
   /* Expenses state
@@ -26,6 +27,11 @@ function App() {
   It starts as an empty object and will be filled with the data entered in the modal window form of the Modal.jsx component */
   const [editExpense, setEditExpense] = useState({});
 
+  /* State to filter expenses
+  Starts as an empty string and will be filled with the option selected in the Filter.jsx component */
+  const [filter, setFilter] = useState('');
+
+  // Update expenses
   useEffect(() => {
     if (Object.keys(editExpense).length > 0) {
       setModal(true);
@@ -36,6 +42,15 @@ function App() {
     }
   }, [editExpense]);
 
+  // Changes in filtering
+  useEffect(() => {
+    if (filter) {
+      // Filter expenses by category
+    }
+  }, [filter])
+
+
+  // Budget at LocalStorage
   useEffect(() => {
     localStorage.setItem('budget', budget || 0);
   }, [budget]);
@@ -109,6 +124,7 @@ function App() {
       {bugetIsValid && (
         <>
           <main>
+            <Filter filter={filter} setFilter={setFilter} />
             <ExpenseList
               expenses={expenses}
               setEditExpense={setEditExpense}
